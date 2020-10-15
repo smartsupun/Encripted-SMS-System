@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#96F0F0"
+    android:backgroundTint="#00A32F2F"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbay"
+        />
+
+    <ImageView
+        android:id="@+id/sms"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/sms" />
+
+
+    <EditText
+        android:id="@+id/textPhoneNo"
+        android:layout_width="403dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Enter phone number"
+        android:layout_marginTop="50dp"
+        android:inputType="phone" />
+
+
+    <EditText
+        android:id="@+id/textMsg"
+        android:layout_width="397dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="#008D8888"
+        android:backgroundTint="#009E9999"
+        android:ems="10"
+        android:hint="  Enter message..."
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:text="send" />
+
+
+</LinearLayout>
