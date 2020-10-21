@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     EditText textMsg, textPhoneNo;
     String msg, phoneNo;
     Button send;
+    //database connect
+    SQLiteOpenHelper openHelper;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
         textMsg = findViewById(R.id.textMsg);
         textPhoneNo = findViewById(R.id.textPhoneNo);
         send = findViewById(R.id.send);
-
+        //database connect
+        openHelper= new DbHandler( this);  
+        
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -88,12 +93,24 @@ public class MainActivity extends AppCompatActivity {
         msg = textMsg.getText().toString();
         phoneNo = textPhoneNo.getText().toString();
 
+        //database connect
+        db=openHelper.getWritableDatabase();
+        insertData(phoneNo, msg );
+
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(phoneNo, null, msg, null, null);
         Toast.makeText(this, "sent!", Toast.LENGTH_LONG).show();
+        
 
     }
 
+    //database connect
+public void insertData(String phoneNo, String msg ){
+          ContentValues contentValues= new ContentValues();
+          contentValues.put(DbHandler.PHONENUMBER,phoneNo);
+          contentValues.put(DbHandler.MESSAGE,msg);
+          long id=db.insert(DbHandler.TABLE_NAME1,null , contentValues);
+      }
 
 
 }
