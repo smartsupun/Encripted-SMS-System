@@ -10,8 +10,12 @@ import androidx.annotation.Nullable;
 
 public class DbHandler extends SQLiteOpenHelper {
     public static final int VERSION = 2;
-    public static final String DB_NAME = "sms.db";
-    public static final String TABLE_NAME1 = "chat";
+    public static final String DB_NAME = "chat.db";
+    public static final String TABLE_NAME;
+    static {
+        TABLE_NAME = "chat";
+    }
+    
     //public static final String TABLE_NAME2 = "";
 
     //collumn name table1
@@ -39,9 +43,9 @@ public class DbHandler extends SQLiteOpenHelper {
                  +NAME + " TEXT,"
                   +PHONENUMBER + " TEXT,"
                  +PASSWORD + " TEXT,"+  */
-        String TABLE_CREATE_QUERY1= String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY AUTOINCREMENT,%s TEXT,%s TEXT, ) ;", TABLE_NAME1, USERID, PHONENUMBER, MESSAGE);
+        String TABLE_CREATE_QUERY= String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY AUTOINCREMENT,%s TEXT,%s TEXT, ) ;", TABLE_NAME, USERID, PHONENUMBER, MESSAGE);
           //run table create query
-      db.execSQL(TABLE_CREATE_QUERY1);
+      db.execSQL(TABLE_CREATE_QUERY);
 
         /*Object user_id;
         String TABLE_CREATE_QUERY2= String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY AUTOINCREMENT,%s INTEGERREFERENCESTABLE_NAME1(USERID),%s INTEGERREFERENCESTABLE_NAME1(USERID),%s TEXT,%s DATE,%s TIME,);", TABLE_NAME2, MESSAGEID, SENDERID, RECIEVERID, MESSAGE, DATE, TIME);
@@ -54,9 +58,9 @@ public class DbHandler extends SQLiteOpenHelper {
     //version update
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-           String DROP_TABLE_QUERY1="DROP TABLE IF EXISTS "+TABLE_NAME1;
+           String DROP_TABLE_QUERY="DROP TABLE IF EXISTS "+TABLE_NAME;
            //drop older table if executed
-           db.execSQL(DROP_TABLE_QUERY1);
+           db.execSQL(DROP_TABLE_QUERY);
            //create table again
            onCreate(db);
 
