@@ -109,7 +109,7 @@ public void insertData(String phoneNo, String msg ){
           ContentValues contentValues= new ContentValues();
           contentValues.put(DbHandler.PHONENUMBER,phoneNo);
           contentValues.put(DbHandler.MESSAGE,msg);
-          long user_id=db.insert(DbHandler.TABLE_NAME,null , contentValues);
+          long id=db.insert(DbHandler.TABLE_NAME,null , contentValues);
       }
 
 
