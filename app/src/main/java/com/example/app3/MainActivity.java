@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 sendTextMessage();
+                 //database connect
+                db=openHelper.getWritableDatabase();
+                insertData(phoneNo, msg );
             }
         });
 
@@ -92,11 +95,6 @@ public class MainActivity extends AppCompatActivity {
     {
         msg = textMsg.getText().toString();
         phoneNo = textPhoneNo.getText().toString();
-
-        //database connect
-        db=openHelper.getWritableDatabase();
-        insertData(phoneNo, msg );
-
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(phoneNo, null, msg, null, null);
         Toast.makeText(this, "sent!", Toast.LENGTH_LONG).show();
