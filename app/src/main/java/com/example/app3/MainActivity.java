@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 sendTextMessage();
+                textMsg.setText("");
+                textPhoneNo.setText("");
                  //database connect
                 db=openHelper.getWritableDatabase();
                 insertData(phoneNo, msg );
