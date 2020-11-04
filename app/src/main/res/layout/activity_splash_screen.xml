@@ -48,7 +48,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:paddingBottom="12dp"
-            android:text="All Right Rceived"
+            android:text="All Right Received"
             android:textSize="18dp" />
 
 

@@ -1,2 +1,2 @@
 # Encripted-SMS-System
-This is projrct on Android based encripted system
+This is project on Android based encripted system
