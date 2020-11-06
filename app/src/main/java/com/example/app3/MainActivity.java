@@ -1,15 +1,15 @@
 package com.example.app3;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.Intent;
+import android.content.ContentValues;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.os.Handler;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
@@ -17,15 +17,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity  {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0;
     EditText textMsg, textPhoneNo;
     String msg, phoneNo;
     Button send;
-    //database connect
     SQLiteOpenHelper openHelper;
     SQLiteDatabase db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +51,14 @@ public class MainActivity extends AppCompatActivity {
         textMsg = findViewById(R.id.textMsg);
         textPhoneNo = findViewById(R.id.textPhoneNo);
         send = findViewById(R.id.send);
-        //database connect
-        openHelper= new DbHandler( this);  
-        
+     
+        openHelper= new DbHandler( this);
+
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 sendTextMessage();
-                textMsg.setText("");
-                textPhoneNo.setText("");
-                 //database connect
-                db=openHelper.getWritableDatabase();
-                insertData(phoneNo, msg );
             }
         });
 
@@ -97,20 +92,22 @@ public class MainActivity extends AppCompatActivity {
     {
         msg = textMsg.getText().toString();
         phoneNo = textPhoneNo.getText().toString();
+        db=openHelper.getWritableDatabase();
+
+        insertData(phoneNo, msg );
+
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(phoneNo, null, msg, null, null);
         Toast.makeText(this, "sent!", Toast.LENGTH_LONG).show();
-        
 
     }
-
-    //database connect
-public void insertData(String phoneNo, String msg ){
+      public void insertData(String phoneNo,String msg){
           ContentValues contentValues= new ContentValues();
           contentValues.put(DbHandler.PHONENUMBER,phoneNo);
           contentValues.put(DbHandler.MESSAGE,msg);
           long id=db.insert(DbHandler.TABLE_NAME,null , contentValues);
       }
+
 
 
 }
