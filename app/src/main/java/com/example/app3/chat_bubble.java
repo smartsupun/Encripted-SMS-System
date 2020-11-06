@@ -21,12 +21,19 @@ public class chat_bubble extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat_bubble);
+
         listview= (ListView) findViewById(R.id.chat_list_view);
         chat_text=(EditText) findViewById(R.id.chatTxt);
         SEND=(Button)findViewById(R.id.send_button);
+
         adapter=new ChatAdapter(ctx,R.layout.single_message_layout);
         listview.setAdapter(adapter);
         listview.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+
+        // Remove list item divider
+        listview.setDivider(null);
+        listview.setDividerHeight(10);
+
         adapter.registerDataSetObserver(new DataSetObserver() {
             public void onChanged(){
                 super.onChanged();
@@ -40,6 +47,7 @@ public class chat_bubble extends Activity {
         public void onClick(View view) {
             adapter.add(new DataProvider(position,chat_text.getText().toString()));
             position=!position;
+            chat_text.setText("");
 
         }
     });
