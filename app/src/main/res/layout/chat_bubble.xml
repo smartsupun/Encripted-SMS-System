@@ -43,7 +43,7 @@
             android:layout_marginBottom="3dp"
             android:background="@color/colorPrimary"
             android:text="@string/send"
-            android:textColor="@color/design_default_color_background"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
     </RelativeLayout>
