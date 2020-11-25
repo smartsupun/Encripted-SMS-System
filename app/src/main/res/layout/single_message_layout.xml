@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dip"
-            android:background="@drawable/left_side_bubble"
+            android:background="@drawable/right_side_bubble"
             android:paddingLeft="10dip"
             android:text="Hello bubbles!"
             android:textColor="@android:color/primary_text_light" />
