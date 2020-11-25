@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">app 3</string>
+    <string name="type_your_messege">app 3</string>
+    <string name="send">app 3</string>
 </resources>

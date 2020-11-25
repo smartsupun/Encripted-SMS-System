@@ -24,7 +24,7 @@ public class splashScreen extends AppCompatActivity {
 
                 }
                 finally {
-                    Intent intent = new Intent (splashScreen.this ,  chat_bubble.class);
+                    Intent intent = new Intent (splashScreen.this ,  MainActivity.class);
                     startActivity(intent);
                     finish();
                 }
