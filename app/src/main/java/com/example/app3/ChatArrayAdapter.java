@@ -1,7 +1,5 @@
 package com.example.app3;
 
-import org.xml.sax.DTDHandler;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
