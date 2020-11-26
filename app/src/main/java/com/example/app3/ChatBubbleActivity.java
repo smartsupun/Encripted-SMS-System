@@ -72,3 +72,5 @@ public class ChatBubbleActivity extends Activity {
         side = !side;
         return true;
     }
+
+}
